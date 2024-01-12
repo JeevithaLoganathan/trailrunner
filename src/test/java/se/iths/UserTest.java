@@ -107,8 +107,14 @@ public class UserTest {
     @Test 
     public void testDeleteDetailsById(){
         User user = new User();
+        Run run = new Run(10, 3600, "2024-01-10", "1");
+       
+        user.addRun(run);
+            
+        int deletedRuns = user.deleteDetailsById("1");
+            
+        assertEquals(1, deletedRuns);  
         
-        assertEquals(0, user.deleteDetailsById("1"));
     }
 
     @Test 
@@ -130,23 +136,6 @@ public class UserTest {
 
     }
 
-
-    @Test
-    public void testRemove_RunExists() {
-        
-        Run existingRun = new Run(10,3600,"2024-01-07","1");
-        User user = new User(); 
-        user.addRun(existingRun);
-
-        
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
-            user.remove(existingRun);
-        });
-
-    
-        assertTrue(exception.getMessage().contains("Run with ID 1 already exists."));
-    }
-  
     }
 
 

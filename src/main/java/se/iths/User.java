@@ -2,6 +2,7 @@ package se.iths;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class User {
     private double height;
@@ -80,24 +81,21 @@ public class User {
         }
 
         public int deleteDetailsById(String id){
-            User user =new User();
-            Run run = new Run(10,3600,"2024-01-10","1");
-            if(run != null&& run.getuserID().equals(id)){
-                user.remove(run);
+            Iterator<Run> iterator = myRuns.iterator();
+                 int deletedRuns = 0;
 
+            while (iterator.hasNext()) {
+                 Run run = iterator.next();
+            if (run != null && run.getuserID().equals(id)) {
+                 iterator.remove();
+                deletedRuns++;
+                 }
             }
-            return 0;
+
+             return deletedRuns;
+             
         }
 
-        public void remove(Run run) {
-
-        for (Run currentRun : myRuns) {
-            if (currentRun.getuserID() == run.getuserID()) {
-            throw new IllegalArgumentException("Run with ID " + run.getuserID() + " already exists.");
-            }
-        }
-            myRuns.remove(run);
-        }
         }
 
 
