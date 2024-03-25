@@ -70,6 +70,7 @@ I select continue
 I click on Book
     [Documentation]     Car booking
     [Tags]      VG_Test_Book
+    Wait Until Page Contains Element    id=bookQ7pass5
     Click Element    id=bookQ7pass5
 
 I enter my card details and click confirm
@@ -133,8 +134,8 @@ Verify I can select only one model
 I select start and end date
     [Documentation]     Date selection
     [Tags]      VG_Test1_Date
-    Input Text    //input[@id='start']      2024/02/29
-    Input Text    //input[@id='end']    2024/02/29
+    Input Text    //input[@id='start']      04-01
+    Input Text    //input[@id='end']    04-03
 
 I should be able to see an alert to log in
     [Documentation]     Car booking
